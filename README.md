@@ -134,6 +134,9 @@ sum(duplicated(daily_activity))
 sum(duplicated(weight_log))
 sum(duplicated(sleep_log))
 ```
+0
+0
+3
 #### Removing duplicates from sleep_log .csv file using the drop_na() function.
 ```R
 sleep_log <- sleep_log %>%
@@ -145,7 +148,7 @@ sleep_log <- sleep_log %>%
 ```R
 sum(duplicated(sleep_log))
 ```
-
+0
 #### Counting how many unique Id's there are in the daily_activity .csv file
 ```R
 library(sqldf)
@@ -159,6 +162,7 @@ A strange finding that I discovered, using the sqldf() function in R, is that th
 library(sqldf)
 sqldf('SELECT DISTINCT Id FROM weight_log ORDER BY Id')
 ```
+
 8 unique Id's were pulled from the weight log table. This number is unrepresentative of our sample size of 33 and will most likely skew results.
 
 #### Counting how many unique Id's there are in the sleep_log .csv file
@@ -247,7 +251,7 @@ This query returned 413 rows. I used the head() function to pull the first 6 row
 ```R
 sum(duplicated(sleep_activity_level))
 ```
-
+3
 #### Removing duplicate values
 ```R
 sleep_activity_level <- sleep_activity_level %>%
@@ -258,6 +262,8 @@ sleep_activity_level <- sleep_activity_level %>%
 ```R
 sum(duplicated(sleep_activity_level))
 ```
+0
+
 ## SHARE
 ### Identifying Trends and Relationships
 
