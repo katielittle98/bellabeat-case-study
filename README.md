@@ -135,7 +135,9 @@ sum(duplicated(weight_log))
 sum(duplicated(sleep_log))
 ```
 0
+
 0
+
 3
 #### Removing duplicates from sleep_log .csv file using the drop_na() function.
 ```R
