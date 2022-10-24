@@ -184,7 +184,7 @@ daily_activity %>%
     select(-Id,-Date)%>%
     summary()
 ````
-
+![](images/summarystats_dailyactivity)
     
 #Summary Statistics for sleep_log
 ```R
