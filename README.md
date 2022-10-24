@@ -358,7 +358,7 @@ ggp4 <- ggplot(data=sleep_activity_level, aes(x=TotalMinutesAsleep, y=FairlyActi
 grid.arrange(ggp1, ggp2, ggp3, ggp4, ncol=4)
 ```
 
-![](images/rltp__activity_sleep.PNG)
+![](images/rltp_activity_sleep.PNG)
 
 Three out of four scatterplots reveal a negative correlation. Opposingly, there is a positive correlation for lightly active minutes and total minutes asleep. Activity level does not impact how long a user remains asleep for, unless they have increased minutes dedicated towards being lightly active. As discovered earlier, users' dedicate more time being lightly active than being fairly active or very active, so duration of activity may mediate this relationship. But, perhaps the time of day a user exercises explains why there is a negative corelation between being very active or fairly active. Although aerobic exercise promotes better sleep quality, strenuous exercise before beddtime should be avoided as it may not allow body temperature to cool, which thereby may delay sleep and/or affect sleep quality (Sleep Foundation, 2020).
 
