@@ -1,6 +1,6 @@
 # **Bellabeat Case Study (Google Data Analytics)**
 
-#### How Can a Wellness Technology Company Play it Smart?
+### How Can a Wellness Technology Company Play it Smart?
 
 ###### By: Katie Little
 
@@ -102,7 +102,7 @@ Packages Installed in R Studio:
 
 The packages, "here", "skimr", and "janitor" are used to clean the data, make file referencing easier, and allows us to skim through the data more efficiently. 
 
-# Loading packages
+#### Loading packages
 
 ```R
 library("tidyverse")
@@ -117,7 +117,7 @@ library("lubridate")
 
 The following datasets were first imported into Rstudio and were named accordingly. The read.csv() function imports each .csv file in the form of a data frame. 
 
-# Importing data
+#### Importing data
 ```R
 daily_activity <- read.csv("../input/bellabeat-dataset/dailyActivity_merged.csv")
 sleep_log <- read.csv("../input/bellabeat-dataset/sleepDay_merged.csv")
@@ -128,25 +128,25 @@ averaged_data <- read.csv("../input/averaged-data2/avgdata.csv")
 
 I will use the duplicated() function to check for duplicate values in each .csv file. 
 
-# Checking for Duplicates 
+#### Checking for Duplicates 
 ```R
 sum(duplicated(daily_activity))
 sum(duplicated(weight_log))
 sum(duplicated(sleep_log))
 ```
-# Removing duplicates from sleep_log .csv file using the drop_na() function.
+#### Removing duplicates from sleep_log .csv file using the drop_na() function.
 ```R
 sleep_log <- sleep_log %>%
     distinct()%>%
     drop_na()
 ```
 
-# Using duplicated() function to check that duplicates were removed
+#### Using duplicated() function to check that duplicates were removed
 ```R
 sum(duplicated(sleep_log))
 ```
 
-# Counting how many unique Id's there are in the daily_activity .csv file
+#### Counting how many unique Id's there are in the daily_activity .csv file
 ```R
 library(sqldf)
 sqldf('SELECT DISTINCT Id FROM daily_activity ORDER BY Id')
@@ -154,14 +154,14 @@ sqldf('SELECT DISTINCT Id FROM daily_activity ORDER BY Id')
 
 A strange finding that I discovered, using the sqldf() function in R, is that there are 33 distinct Id's in the daily_activity .csv file. In the dataset on kaggle, it is stated that 30 people consented to participate in the study. It cannot be determined if this was merely an issue in the description of the dataset or within the data itself. Because each Id is unique and has 10 #'s, I will move forward with 33 as our sample size.
 
-# Counting how many unique Id's there are in the weight_log .csv file
+#### Counting how many unique Id's there are in the weight_log .csv file
 ```R
 library(sqldf)
 sqldf('SELECT DISTINCT Id FROM weight_log ORDER BY Id')
 ```
 8 unique Id's were pulled from the weight log table. This number is unrepresentative of our sample size of 33 and will most likely skew results.
 
-# Counting how many unique Id's there are in the sleep_log .csv file
+#### Counting how many unique Id's there are in the sleep_log .csv file
 ```R
 library(sqldf)
 sqldf('SELECT DISTINCT Id FROM sleep_log ORDER BY Id')
@@ -196,7 +196,7 @@ weight_log %>%
 ```
 Based on the summary statistics, the average user takes 7,638 steps and burns 2,304 calories a day. The average user spends 991.2 minutes being sedentary, 192.8 minutes being lightly active, 13.56 minutes being fairly active, and 21.16 minutes being very active per day. The average user spends 458.5 minutes in bed and 419.2 minutes asleep. The average user's weight, in pounds, is 158.8, while the average BMI is 25.19. A limitation to the data is that the unit of length for Total Distance is unknown; therefore, we cannot draw a conclusion from this.
 
-# Counting how many people completed at least 8000 steps
+#### Counting how many people completed at least 8000 steps
 ```R
 library(sqldf)
 sqldf('SELECT Id,COUNT(*) AS completed_8k FROM daily_activity WHERE TotalSteps >= 8000 GROUP BY Id
@@ -206,7 +206,7 @@ After using the sqldf() function, I see that there are 31 users out of the 33 to
 
 Based on the data from the weight_log .csv file, 8 unique Id's are reported, with each Id containing one or more log entries across various dates. I will use SQL to calcuate the average for Weight (in pounds) and BMI. I will then calculate the averages for Calories burned, Very Active Minutes, and Sedentary Minutes per Id.
 
-# Finding the average BMIs and average Weights (in Pounds) for each ID
+#### Finding the average BMIs and average Weights (in Pounds) for each ID
 ```R
 sqldf('SELECT Id,
 AVG(BMI) AS avg_bmi,
@@ -216,7 +216,7 @@ AVG(WeightPounds) AS avg_weight
  GROUP BY Id')
  ```
  
- # Finding the averages for Calories burned, Very Active Minutes, and Sedentary Minutes per Id
+#### Finding the averages for Calories burned, Very Active Minutes, and Sedentary Minutes per Id
  ```R
 sqldf('SELECT Id,
 AVG(Calories) AS avg_cal,
@@ -228,7 +228,7 @@ WHERE Id IN (1503960366, 1927972279, 2873212765, 4319703577, 4558609924,55771503
  ```
 After calculating the average weight, BMI, and activity levels for each ID, I copied the results and made a new .csv file for later analysis -> avgdata.csv.
 
-# Using a left join to return all records from sleep log table and matching records from daily activity 
+#### Using a left join to return all records from sleep log table and matching records from daily activity 
 ```R
 head(sqldf('SELECT sleep_log.Id, VeryActiveMinutes, SedentaryMinutes, LightlyActiveMinutes, FairlyActiveMinutes, TotalMinutesAsleep
 FROM sleep_log AS sleep_log
@@ -239,18 +239,18 @@ ORDER BY sleep_log.Id, sleep_log.Date'))
 
 This query returned 413 rows. I used the head() function to pull the first 6 rows as an example to show what the data looks like. Based on the results generated from this table, I saved it as its own .csv file -> sleepactivitylevel.csv. I will use this file later in my analysis.
 
-# Checking for duplicate values
+#### Checking for duplicate values
 ```R
 sum(duplicated(sleep_activity_level))
 ```
 
-# Removing duplicate values
+#### Removing duplicate values
 ```R
 sleep_activity_level <- sleep_activity_level %>%
     distinct()%>%
     drop_na()
 ```
-# Checking for duplicate values
+#### Checking for duplicate values
 ```R
 sum(duplicated(sleep_activity_level))
 ```
