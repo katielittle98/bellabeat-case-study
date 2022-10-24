@@ -180,34 +180,7 @@ daily_activity %>%
     select(-Id,-Date)%>%
     summary()
 ````
-  TotalSteps    TotalDistance    TrackerDistance  LoggedActivitiesDistance
- Min.   :    0   Min.   : 0.000   Min.   : 0.000   Min.   :0.0000          
- 1st Qu.: 3790   1st Qu.: 2.620   1st Qu.: 2.620   1st Qu.:0.0000          
- Median : 7406   Median : 5.245   Median : 5.245   Median :0.0000          
- Mean   : 7638   Mean   : 5.490   Mean   : 5.475   Mean   :0.1082          
- 3rd Qu.:10727   3rd Qu.: 7.713   3rd Qu.: 7.710   3rd Qu.:0.0000          
- Max.   :36019   Max.   :28.030   Max.   :28.030   Max.   :4.9421          
- VeryActiveDistance ModeratelyActiveDistance LightActiveDistance
- Min.   : 0.000     Min.   :0.0000           Min.   : 0.000     
- 1st Qu.: 0.000     1st Qu.:0.0000           1st Qu.: 1.945     
- Median : 0.210     Median :0.2400           Median : 3.365     
- Mean   : 1.503     Mean   :0.5675           Mean   : 3.341     
- 3rd Qu.: 2.053     3rd Qu.:0.8000           3rd Qu.: 4.782     
- Max.   :21.920     Max.   :6.4800           Max.   :10.710     
- SedentaryActiveDistance VeryActiveMinutes FairlyActiveMinutes
- Min.   :0.000000        Min.   :  0.00    Min.   :  0.00     
- 1st Qu.:0.000000        1st Qu.:  0.00    1st Qu.:  0.00     
- Median :0.000000        Median :  4.00    Median :  6.00     
- Mean   :0.001606        Mean   : 21.16    Mean   : 13.56     
- 3rd Qu.:0.000000        3rd Qu.: 32.00    3rd Qu.: 19.00     
- Max.   :0.110000        Max.   :210.00    Max.   :143.00     
- LightlyActiveMinutes SedentaryMinutes    Calories   
- Min.   :  0.0        Min.   :   0.0   Min.   :   0  
- 1st Qu.:127.0        1st Qu.: 729.8   1st Qu.:1828  
- Median :199.0        Median :1057.5   Median :2134  
- Mean   :192.8        Mean   : 991.2   Mean   :2304  
- 3rd Qu.:264.0        3rd Qu.:1229.5   3rd Qu.:2793  
- Max.   :518.0        Max.   :1440.0   Max.   :4900  
+
     
 #Summary Statistics for sleep_log
 ```R
@@ -215,13 +188,7 @@ sleep_log %>%
     select(-Id, -Date) %>%
     summary()
 ```
- TotalSleepRecords TotalMinutesAsleep TotalTimeInBed 
- Min.   :1.00      Min.   : 58.0      Min.   : 61.0  
- 1st Qu.:1.00      1st Qu.:361.0      1st Qu.:403.8  
- Median :1.00      Median :432.5      Median :463.0  
- Mean   :1.12      Mean   :419.2      Mean   :458.5  
- 3rd Qu.:1.00      3rd Qu.:490.0      3rd Qu.:526.0  
- Max.   :3.00      Max.   :796.0      Max.   :961.0  
+
  
 #Summary Statistics for weight_log
 ```R
@@ -229,13 +196,7 @@ weight_log %>%
     select(WeightPounds, BMI)%>%
     summary()
 ```
-WeightPounds        BMI       
- Min.   :116.0   Min.   :21.45  
- 1st Qu.:135.4   1st Qu.:23.96  
- Median :137.8   Median :24.39  
- Mean   :158.8   Mean   :25.19  
- 3rd Qu.:187.5   3rd Qu.:25.56  
- Max.   :294.3   Max.   :47.54  
+
 
 Based on the summary statistics, the average user takes 7,638 steps and burns 2,304 calories a day. The average user spends 991.2 minutes being sedentary, 192.8 minutes being lightly active, 13.56 minutes being fairly active, and 21.16 minutes being very active per day. The average user spends 458.5 minutes in bed and 419.2 minutes asleep. The average user's weight, in pounds, is 158.8, while the average BMI is 25.19. A limitation to the data is that the unit of length for Total Distance is unknown; therefore, we cannot draw a conclusion from this.
 
