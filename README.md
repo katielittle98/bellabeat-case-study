@@ -169,7 +169,7 @@ sqldf('SELECT DISTINCT Id FROM sleep_log ORDER BY Id')
 
 24 unique Id's were found in the sleep log table.
 
-## **ANALYSIS
+## **ANALYSIS**
 
 #### Calculating Summary Statistics 
 In order to get the minimum, maximum, median, and mean values for each column, I will use the summary() function. This will also help to identify any potential outliers. 
