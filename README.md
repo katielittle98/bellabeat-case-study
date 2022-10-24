@@ -350,6 +350,7 @@ In conclusion, users' positively benefit from some level of activity, as opposed
 * A positive relationship between Lightly Active Minutes and Total Minutes Asleep.
 * A series of negative relationships bbetween Very Active Minues and Total Minutes Asleep, Fairly Active Minutes and Total Minutes Asleep, and Lightly Active Minutes and Total Minutes Asleep. 
 ​
+
 **Reccomendations for Bellabeat**
 1. Provide an incentive for users' to update weight and sleep logs on a daily basis
 2. Allow users' to share activity with friends
