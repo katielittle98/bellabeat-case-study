@@ -1,4 +1,4 @@
-# **Bellabeat Case Study (Google Data Analytics)**
+# **Bellabeat Case Study (Google Data Analytics Proffesionn Certificate)**
 
 ### How Can a Wellness Technology Company Play it Smart?
 
