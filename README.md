@@ -178,7 +178,7 @@ sqldf('SELECT DISTINCT Id FROM sleep_log ORDER BY Id')
 #### Calculating Summary Statistics 
 In order to get the minimum, maximum, median, and mean values for each column, I will use the summary() function. This will also help to identify any potential outliers. 
 
-#Summary statistics for daily_activity
+# Summary statistics for daily_activity
 ```R
 daily_activity %>%
     select(-Id,-Date)%>%
@@ -186,7 +186,7 @@ daily_activity %>%
 ````
 ![](images/summarystats_dailyactivity)
     
-#Summary Statistics for sleep_log
+# Summary Statistics for sleep_log
 ```R
 sleep_log %>%
     select(-Id, -Date) %>%
@@ -194,7 +194,7 @@ sleep_log %>%
 ```
 
  
-#Summary Statistics for weight_log
+# Summary Statistics for weight_log
 ```R
 weight_log %>%
     select(WeightPounds, BMI)%>%
