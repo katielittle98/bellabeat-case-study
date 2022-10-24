@@ -184,7 +184,7 @@ daily_activity %>%
     select(-Id,-Date)%>%
     summary()
 ````
-![](images/summarystats_dailyactivity)
+![](images/summarystats_dailyactivity.PNG)
     
 # Summary Statistics for sleep_log
 ```R
@@ -192,7 +192,7 @@ sleep_log %>%
     select(-Id, -Date) %>%
     summary()
 ```
-
+![](images/summarystats_sleeplog.PNG)
  
 # Summary Statistics for weight_log
 ```R
@@ -200,7 +200,7 @@ weight_log %>%
     select(WeightPounds, BMI)%>%
     summary()
 ```
-
+![](images/summarystats_weightlog.PNG)
 
 Based on the summary statistics, the average user takes 7,638 steps and burns 2,304 calories a day. The average user spends 991.2 minutes being sedentary, 192.8 minutes being lightly active, 13.56 minutes being fairly active, and 21.16 minutes being very active per day. The average user spends 458.5 minutes in bed and 419.2 minutes asleep. The average user's weight, in pounds, is 158.8, while the average BMI is 25.19. A limitation to the data is that the unit of length for Total Distance is unknown; therefore, we cannot draw a conclusion from this.
 
@@ -224,6 +224,8 @@ AVG(WeightPounds) AS avg_weight
  GROUP BY Id')
  ```
  
+![](images/avg_bmi_weight.PNG)
+
 #### Finding the averages for Calories burned, Very Active Minutes, and Sedentary Minutes per Id
  ```R
 sqldf('SELECT Id,
@@ -234,6 +236,8 @@ FROM daily_activity
 WHERE Id IN (1503960366, 1927972279, 2873212765, 4319703577, 4558609924,5577150313, 6962181067, 8877689391)
  GROUP BY Id')
  ```
+![](images/avg_cal_activity.PNG)
+
 After calculating the average weight, BMI, and activity levels for each ID, I copied the results and made a new .csv file for later analysis -> avgdata.csv.
 
 #### Using a left join to return all records from sleep log table and matching records from daily activity 
@@ -244,6 +248,8 @@ LEFT JOIN daily_activity AS daily_activity
 ON sleep_log.Id = daily_activity.Id and sleep_log.Date = daily_activity.Date
 ORDER BY sleep_log.Id, sleep_log.Date'))
 ```
+
+![](images/avg_activity_min.PNG)
 
 This query returned 413 rows. I used the head() function to pull the first 6 rows as an example to show what the data looks like. Based on the results generated from this table, I saved it as its own .csv file -> sleepactivitylevel.csv. I will use this file later in my analysis.
 
@@ -279,6 +285,7 @@ fig <- plot_ly(type='pie', labels=labels, values=values,
                insidetextorientation='radial')
 fig
 ```
+![](images/pi_chart.PNG)
 
 The pie chart is based on the average values calculated for each activity level. 81.3% of users' days are spent being sedentary, while a total of 18.68% involves some activity (15.8% for Lightly Active Minutes, 1.77% for Very Active Minutes, and 1.11% for Fairly Active Minutes). It is difficult to infer what each of the definitions mean for activity level. While it is reccomended that adults complete 30 minutes of "moderate exercise" everyday, it appears that each adult, on average, is surpassing that amount. Users complete 34.72 minutes of fairly active and very active minutes combined. However, if light activity is to be included within the definition, then 227.52 minutes of total activity are completed.
 
@@ -290,6 +297,7 @@ ggplot(daily_activity, aes(x=TotalSteps, y=Calories)) +
   geom_smooth(method=lm, se=FALSE)+
 labs(title= "Relationship Between Daily Steps and Total Calories Burned")
 ```
+![](images/rltp_steps_cals.PNG)
 
 This scatterplot shows there is a positive relationship between total steps taken and calories burned per day. The more steps a user takes throughout the day, the more calories they will burn.
 
@@ -312,6 +320,7 @@ ggp4 <- ggplot(data=daily_activity, aes(x=Calories, y=SedentaryMinutes)) +
   geom_smooth(method=lm,se= FALSE)
 grid.arrange(ggp1, ggp2, ggp3, ggp4, ncol=4, top= "Relationship Between Calories Burned and Activity Level")
 ```
+![](images/rltp_cal_activity.PNG)
 
 There is a positive correlation between Very Active Minutes and Calories, Fairly Active Minutes and Calories, and Lightly Active Minutes and Calories. The more minutes throughout the day that were spent involving some level of activity, the more calories were burned. Opposingly, there is a negative relationship between Sedentary Activity and Calories burned throughout the day. Therefore, the more minutes users' spend being sedentary, the less calories they are burning throughout the day.
 
@@ -326,6 +335,7 @@ ggp2 <- ggplot(data=averaged_data, aes(x=VeryActiveMin, y=AvgBMI)) +
   geom_smooth(method=lm,se= FALSE)
 grid.arrange(ggp1, ggp2, ncol=2, top= "Relationship Between Activity Level and BMI")
 ```
+![](images/rltp_activity_bmi.PNG)
 
 Based on the two scatterplots above, there is a positive relationship between users' average Sedentary Minutes and average BMI and a negative relationship between users' average Very Active Minutes and average BMI. The more time users spend in their day being sedentary, the higher their BMI. On the other hand, the more time users spend being very active, the lower their BMI. A limitation to this analysis is based on there being only 8 out of 33 users actively calculating their BMI's and recording their weights. It may be difficult to drawn conclusions based on this small sample size. However, physical Activity tends to have an inverse relationship with Body Mass Index and studies have shown that the more time dedicated towards physical actvitity, the lower an indivdual's BMI will be (Bradbury et al., 2017).
 
@@ -345,6 +355,8 @@ ggp4 <- ggplot(data=sleep_activity_level, aes(x=TotalMinutesAsleep, y=FairlyActi
   geom_smooth(method=lm,se= FALSE)
 grid.arrange(ggp1, ggp2, ggp3, ggp4, ncol=4)
 ```
+
+![](images/rltp__activity_sleep.PNG)
 
 Three out of four scatterplots reveal a negative correlation. Opposingly, there is a positive correlation for lightly active minutes and total minutes asleep. Activity level does not impact how long a user remains asleep for, unless they have increased minutes dedicated towards being lightly active. As discovered earlier, users' dedicate more time being lightly active than being fairly active or very active, so duration of activity may mediate this relationship. But, perhaps the time of day a user exercises explains why there is a negative corelation between being very active or fairly active. Although aerobic exercise promotes better sleep quality, strenuous exercise before beddtime should be avoided as it may not allow body temperature to cool, which thereby may delay sleep and/or affect sleep quality (Sleep Foundation, 2020).
 
