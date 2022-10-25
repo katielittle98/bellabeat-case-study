@@ -48,7 +48,7 @@ Bellabeat, founded in 2013, is a tech-driven wellness company created to empower
 
 ## **PREPARE**
 
-The data used for this analysis is the FitBit Fitness Tracker Data from Kaggle and is licensed under CC0: Public Domain by the author. This includes 18 datasets from 30 users who consented to having their personal data tracked and responses recorded through a distributed survey via Amazon Mechanical Turk between 03.12.2016-05.12.2016. The datasets are organized in long format and record physical activity, heart rate, sleep, and weight. All datasets are in .csv file format. 
+The data used for this analysis is from the FitBit Fitness Tracker Data on Kaggle (https://www.kaggle.com/datasets/arashnic/fitbit) and is licensed under CC0: Public Domain by the author. This includes 18 datasets from 30 users who consented to having their personal data tracked and responses recorded through a distributed survey via Amazon Mechanical Turk between 03.12.2016-05.12.2016. The datasets are organized in long format and record physical activity, heart rate, sleep, and weight. All datasets are in .csv file format. 
 
 The focus of this analysis will highlight users' daily habits. The data will include users' sleep and weight logs and measures of daily activity (including total steps, total distance, level of intensities, calories burned, and duration of exercise).
 
